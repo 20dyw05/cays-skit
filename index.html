@@ -146,7 +146,7 @@ const CUES=[
  {id:'22b',act:2,name:'Street ambience (Beautiful Gate)',syn:'street',loop:true,lvl:.7,rev:.2,stops:'all'},
  {id:'23',act:2,name:'Flex!',syn:'flex',rev:.4},
  {id:'24',act:2,name:'Coins → womp womp',syn:'coinWomp',rev:.25},
- {id:'25',act:2,name:'“WALK!” choir hit',syn:'choirHit',big:true,rev:.6,tip:'Then let 2–3 seconds of silence hang before “Woah.”'},
+ {id:'25',act:2,name:'Healing choir (“walk!”)',syn:'choirHit',big:true,rev:.6,tip:'Plays over the street ambience. Lets the moment hang before “Woah.”'},
  {id:'26',act:2,name:'Victory lap music',syn:'victory',loop:true,lvl:.8,rev:.2},
  {id:'27',act:2,name:'Villain chord',syn:'villain',stops:['26'],rev:.5},
  {id:'28',act:2,name:'Sermon piano',syn:'sermon',loop:true,lvl:.6,rev:.4},
@@ -161,7 +161,7 @@ const CUES=[
  {id:'35',act:3,name:'Scuffle',syn:'scuffle',rev:.2},
  {id:'36',act:3,name:'Crowd cheer',syn:'cheer',rev:.3},
  {id:'37',act:3,name:'OBJECTION!',syn:'court',stops:'all',big:true,then:[['38',3.5]],rev:.5,tip:'Opens the courtroom. Stops the noir theme; the courtroom underscore (38) starts by itself after it.'},
- {id:'38',act:3,name:'Courtroom underscore',syn:'underscore',loop:true,lvl:.7,rev:.3,stops:'all',tip:'Act 3 opens: the table becomes the leaders’ stand for the hearing.'},
+ {id:'38',act:3,name:'Trial music',syn:'underscore',loop:true,lvl:.7,rev:.3,stops:'all',tip:'Plays under the whole hearing. Starts by itself after OBJECTION!'},
  {id:'39',act:3,name:'Gavel',syn:'gavel',rev:.3},
  {id:'40',act:3,name:'Suspense build',syn:'riser',stops:['38'],rev:.4},
  {id:'41',act:3,name:'Onion punchline',syn:'fanfare',stops:'all',rev:.4,slot:true,tip:'Placeholder fanfare. Drop your own song file here.'},
@@ -170,7 +170,7 @@ const CUES=[
  {id:'B',act:3,name:'I’m a Believer (ending)',syn:'victory',stops:'all',lvl:.9,rev:.2,tip:'The “I believe” dance and the ending. Plays the whole song (about 3 minutes); press Fade all to end it sooner.'},
 ];
 // Cues shown on the board / in the script. Everything else in CUES is kept in reserve.
-const ENABLED=['01','03','05','06','07','18','19','22','22b','37','38','B'];
+const ENABLED=['01','03','05','06','07','18','19','22','22b','25','37','38','B'];
 const byId=Object.fromEntries(CUES.map((c,i)=>[c.id,Object.assign(c,{idx:i})]));
 
 /* =========================================================
@@ -227,7 +227,7 @@ PI: Lock-in bro. We don't have too much time this skit has to be 15 minutes.
 Witness 2: Ohh yeah, sorry. So, at the gate there was a lame man, always see him there, but then there were two men, who I hadn't seen before, and they approached the gate man, and he was like "can you give me some money, some gold," but then they replied...
 Peter: Look at us! [Peter (Melvin) flexes his nonexistent muscles]
 Lame: [Looks at them for a bit, then signals to his hand, expecting them to drop some cash on them]
-Peter: Nonono, I actually have no gold, but I can do you something better. [He reaches down to the lame man and take his hand] In the Name of Jesus Christ of Nazareth– walk!
+Peter: Nonono, I actually have no gold, but I can do you something better. [He reaches down to the lame man and take his hand] In the Name of Jesus Christ of Nazareth– walk! {{25}}
 [The Lame man exerts effort and gets up on his two legs. He stans still for a few seconds, looking down at his legs.]
 Lame: Woah.
 [The Lame man shakes his legs, does a little lap around Peter and John.]
