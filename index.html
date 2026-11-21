@@ -160,14 +160,14 @@ const CUES=[
  {id:'34',act:3,name:'Dun dun DUN',syn:'dun',stops:['33b'],rev:.5},
  {id:'35',act:3,name:'Scuffle',syn:'scuffle',rev:.2},
  {id:'36',act:3,name:'Crowd cheer',syn:'cheer',rev:.3},
- {id:'37',act:3,name:'OBJECTION!',syn:'court',stops:'all',big:true,then:[['38',3.5]],rev:.5,tip:'Opens the courtroom. Stops the noir theme; the courtroom underscore (38) starts by itself after it.'},
+ {id:'37',act:3,name:'OBJECTION!',syn:'court',stops:'all',big:true,then:[['38',1.25]],rev:.5,tip:'Opens the courtroom. Stops the noir theme; the trial music (38) comes in right as the word ends.'},
  {id:'38',act:3,name:'Trial music',syn:'underscore',loop:true,lvl:.7,rev:.3,stops:'all',tip:'Plays under the whole hearing. Starts by itself after OBJECTION!'},
  {id:'39',act:3,name:'Gavel',syn:'gavel',rev:.3},
  {id:'40',act:3,name:'Suspense build',syn:'riser',stops:['38'],rev:.4},
  {id:'41',act:3,name:'Onion punchline',syn:'fanfare',stops:'all',rev:.4,slot:true,tip:'Placeholder fanfare. Drop your own song file here.'},
 
  {id:'D',act:4,name:'Donkey bit',syn:'bouncy',loop:true,lvl:.7,rev:.2,tip:'Max is cast as Donkey but has no lines yet.'},
- {id:'B',act:3,name:'I’m a Believer (ending)',syn:'victory',stops:'all',lvl:.9,rev:.2,tip:'The “I believe” dance and the ending. Plays the whole song (about 3 minutes); press Fade all to end it sooner.'},
+ {id:'B',act:3,name:'I’m a Believer (ending)',syn:'victory',stops:'all',lvl:.9,rev:.2,tip:'The “I believe” dance and the ending. Intro (0:00–0:07) jumps straight to 2:19 and plays to the end: about 53 seconds.'},
 ];
 // Cues shown on the board / in the script. Everything else in CUES is kept in reserve.
 const ENABLED=['01','03','05','06','07','18','19','22','22b','25','37','38','B'];
