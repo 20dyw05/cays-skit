@@ -161,7 +161,7 @@ const CUES=[
  {id:'35',act:3,name:'Scuffle',syn:'scuffle',rev:.2},
  {id:'36',act:3,name:'Crowd cheer',syn:'cheer',rev:.3},
  {id:'37',act:3,name:'Court transition hits',syn:'court',stops:'all',rev:.5,tip:'Or drop a “dun-dun” sound file here.'},
- {id:'38',act:3,name:'Courtroom underscore',syn:'underscore',loop:true,lvl:.7,rev:.3,stops:'all'},
+ {id:'38',act:3,name:'Courtroom underscore',syn:'underscore',loop:true,lvl:.7,rev:.3,stops:'all',tip:'Act 3 opens: the table becomes the leaders’ stand for the hearing.'},
  {id:'39',act:3,name:'Gavel',syn:'gavel',rev:.3},
  {id:'40',act:3,name:'Suspense build',syn:'riser',stops:['38'],rev:.4},
  {id:'41',act:3,name:'Onion punchline',syn:'fanfare',stops:'all',rev:.4,slot:true,tip:'Placeholder fanfare. Drop your own song file here.'},
@@ -178,7 +178,7 @@ const byId=Object.fromEntries(CUES.map((c,i)=>[c.id,Object.assign(c,{idx:i})]));
    ========================================================= */
 const SCRIPT=`
 ## ACT 1 — Intro and Pentecost
-[Luke walks towards his desk and taps at a piece of evidence that is troubling him: a photo of the place where the lame man used to be placed every day.] {{01}}
+[The PI (Tim) walks towards his desk and taps at a piece of evidence that is troubling him: a photo of the place where the lame man used to be placed every day.] {{01}}
 PI: This doesn't make sense, how is it possible that a man who was lame (TO AUDIENCE: meaning he couldn't walk, right, not that he was uncool or something), is now able to walk? All the evidence is pointing to supernatural reasons, but why would this happen, why now?
 [Theophilus comes in accompanied by Witness 1, one of those that now believes (Nalani)] {{03}}
 Theophilus: I have found the witness who claims to know some people involved in the incident.
@@ -190,75 +190,83 @@ Witness 1: I understand, standing completely OK.
 PI: Let us get this quick, the hearing before the court of powerful elites is gonna happen in a couple of hours.
 Witness 1: I was not there for the main case in question, but I do think there's something that happened not too long before which is important to what happened with that lame guy.
 PI: [rubs his mustache and nods his head dramatically] Anything bro, anything that would help us get any clarity to this miraculous act.
-[Now, as the Witness describes what is going on, the scene plays out next to them. People come in from the side and take their positions.] {{05}}
+[Now, as the Witness describes what is going on, the scene plays out next to them, as she starts, from my research I do not think many props will be necessary, people would just need to come in from the side and take their positions, so to speak.] {{05}}
 Witness 1: It was the day of Pentecost, and there were a lot of people, some people came from a couple blocks away, other people travelled from all the way in Asia, all were hoping to celebrate this special festival. And the twelve disciples of Jesus were there, including Peter and John.
-[Next to them, as if on a different stage, the Apostles (Peter, John, and another one) gather together sitting on the ground, and other people are around talking to each other.]
+[Next to them, as if on a different stage, the Apostles (Peter (Melvin), John (Chase)) gather together sitting on the ground, and other people (Egypt, Arturo, Darin, Kai) are around talking to each other.]
 Witness 1: And we were everybody minding our own business, kind of, celebrating and praying, and then all of a sudden like a massive hurricane comes in, {{07}} it kind of gave me tinnitus. {{06}}
-[At "a massive hurricane comes in", a huge sound comes in, and then the Holy Spirit (Quinton) descends.]
-Witness 1: And then there was like a fire that fell upon them [Quinton throws orange/yellow confetti on the disciple characters], and then these guys started speaking in a language I could understand?
-[The disciples get up from sitting down and start speaking actual languages, of the marvels that God has done. Everybody around looks at them confused.]
-Guy 1: Why are there drunk people here? Have they not read Proverbs 31? They filled with the sweet wine bro.
-Guy 2: No, but they are speaking actual languages, I got a bit of Mexican and Chinese from their words, which, as you would understand, doesn't make sense. They are neither Chinese or Mexican.
-[The PI and the Witness walk into the scene, as if they were walking into a museum, looking around. They are not perceived by everyone else.]
+[At "a massive hurricane comes in", a huge sound comes in, and then the Holy Spirit (Quinton), descends].
+Witness 1: And then there was like a fire that fell upon them [Quinton throws orange/yellow confetti on the disciple characters], and then these guys started speaking in a language i could understand?
+[The disciples get up from sitting down and start speaking actual languages, of the marvels that God has done. Everybody around looks at them confused, two people (who are not the disciples), talk to each other:].
+Chase: Ustedes necesitan correr para Jesus Christo Ahora Mismo. Quieren dar sus vidas a Dios. Me gusta
+Guy 1 (Darin): Why are there drunk people here? Have they not read Proverbs 31? They filled with the sweet wine bro.
+Guy 2 (Arturo): No, but they are speaking actual languages, I got a bit of Mexican and Chinese from their words, which, as you would understand, doesn't make sense. They are neither Chinese nor Mexican.
+[The PI and the Witness walk into the scene, as if they were walking into a museum, looking around. They are not, perceived by everyone else.]
 PI: So they, just started speaking random languages, fluently, without an accent?
 Witness 1: Yeah, quite gnarly I think.
 PI: Wait what, that is equally as unbelievable as the lame man story.
-Witness 1: I know, I thought so too, but then Peter, one of the twelve disciple guys, explained on their behalf.
-[Peter (Melvin) walks forward, and speaks to the people, and also, in a way, to the audience.]
-Peter: Everyone, we are not drunk; it's too early for any drinking! But you guys know, the homie, the prophet Joel, he said that God said: "I will pour forth of My Spirit on all mankind" and "I will grant wonder in the sky above and signs in the earth below," "And it shall be that everyone who calls on the name of the Lord will be saved".
-[The other disciples back him up: "Preach", "Facts", "Uh huh"]
+Witness 1: I know, I thought so to, but then Peter, one of the twelve disciple guys, explained on their behalf.
+[Peter (Melvin), walks forward, and speaks to the people, and also, in a way, to the audience.]
+Peter: Everyone, we are not drunk! But you guys know, the homie, the prophet Joel, he said, that God said: "I will pour forth of My Spirit on all mankind" and "I will grant wonder in the sky above and signs in the earth below," "And it shall be that everyone who calls on the name of the Lord will be saved".
+[Hoping to have something happen here, so that it's not just Peter talking with nothing happening. Maybe the other disciples can back him up with; "Preach", "Fact" "Uh huh" “That’s on Bible”
 Peter: But this man– Jesus, this man performed many miracles that proved who He was, He was sent by God and His plan, and you guys crucified Him. You literally killed Him. But He rose up again, David said in His Psalms: "Because You will not abandon my soul to Hades, nor allow Your Holy One to undergo decay." We know that David is dead, so he was not talking about himself, but he spoke of Jesus, who rose from the dead, and to whose rising up we are all witnesses. He caused all this to happen, which you are seeing and hearing– so you guys can know, all you in Israel, that God made Him both Lord and Christ– this Jesus whom you crucified.
 [There is a commotion and everyone looks worried]
 Guy 2: [In agony and worry] What do we do, then? Are we cooked with the sauce?
 Peter: Repent, and be baptized because of your forgiveness.
 Witness 1: And everyone who believed, started serving one another, we ate together like every day, and the apostles continued to show great signs, I haven't gotten to see all of them though.
 [Everyone except Witness 1 and the PI exit the scene] {{18}}
-
 ## ACT 2 — Healing of the Lame Man
 PI: Wait, hold on, hold on, there was a lot in all of that. [The PI leans onto his table with most of his weight, thinking out loud] So there's a Jesus, who gives powers? And not only that He is able to forgive sins?
 Witness 1: Yes, the Spirit of God gave them the power to speak tongues, and through it they have performed many miracles, which would include the healing at the Beautiful Gate.
 PI: But why would God give people the power to speak in tongues, like within this week? What is this all about, what is the motive?
-[As the PI is confused, Theophilus comes in with another witness (Gianna), who will testify on the healing of the Lame Man.] {{19}}
+[As the PI is confused, Theophilus comes in with another witness (Gianna), who will testify on the healing of the Lame Man]. {{19}}
 Theophilus: We got an actual witness for the healing incident.
 PI: Ok, alright yeah let's hear her out, what happened, did you hear anyone speaking Chinese?
 Witness 2: What? Uh, I don't remember, I don't think so? What happened was as I was walking home, I passed by the Beautiful Gate, because it's sort of on the way, if you don't detour too much from the traffic of crowds, it saves you like 3 minutes and...
-PI: Lock-in bro. We don't have too much time this skit has to be 10 minutes.
-[As the Witness describes this next scene, that scene unfolds right next to them, but now there is a lame guy on the floor.] {{22}}
+PI: Lock-in bro. We don't have too much time this skit has to be 15 minutes.
+[As the Witness describes this next scene, that scene unfolds right next to them, again, like in the previous section, but now there is a lame guy on the floor.] {{22}}
 Witness 2: Ohh yeah, sorry. So, at the gate there was a lame man, always see him there, but then there were two men, who I hadn't seen before, and they approached the gate man, and he was like "can you give me some money, some gold," but then they replied...
 Peter: Look at us! [Peter (Melvin) flexes his nonexistent muscles]
-Lame: [Looks at them for a bit, then signals to his hand, expecting them to drop some cash]
-Peter: Nonono, I actually have no gold, but I can do you something better. [He reaches down to the lame man and takes his hand] In the Name of Jesus Christ of Nazareth– walk!
-[The Lame man exerts effort and gets up on his two legs. He stands still for a few seconds, looking down at his legs.]
+Lame: [Looks at them for a bit, then signals to his hand, expecting them to drop some cash on them]
+Peter: Nonono, I actually have no gold, but I can do you something better. [He reaches down to the lame man and take his hand] In the Name of Jesus Christ of Nazareth– walk!
+[The Lame man exerts effort and gets up on his two legs. He stans still for a few seconds, looking down at his legs.]
 Lame: Woah.
 [The Lame man shakes his legs, does a little lap around Peter and John.]
 Lame: Okokok, OK! WHAT? Praise God! How, Huh??
 PI: He just lifted him up, and he got up? and he walked? There seems to be power in this name, the one of Jesus. By it all these things are happening.
-Witness 2: Yeah, I think you are getting it. In fact, Peter went on a long sermon about it like right after. In fact, the Sadducees, priests, and temple guards were there.
-[The host of religious leaders and the Temple Guard show up.]
-Peter: You guys think this was by our own power. But nah, the power that healed Him was Jesus, whom, last time I checked, you guys crucified, and asked instead for a murderer to be given back to you. But God raised this Prince of life from the dead, and in the name of Jesus this man who I am sure you guys know was strengthened to walk again. So PLEASE, repent and return, so that your sins may be wiped away, in order that times of refreshing may come from the presence of the Lord.
+Witness 2: Yeah, I think you are getting it. In fact, Peter went on a long Sermon about it like right after. In fact, the Sadducees, priests, and temple guards were there.
+[The host of religious leaders (Priscilla, Jared, Max, and Ariel) and the Temple Guard (Juan and Victor) show up.]
+Peter: You guys think this was by our own power. But nah, the power that healed Him was Jesus, whom, last time I checked, you guys crucified, and asked instead for a murderer to be given back to you. But God raised this Prince of life form the dead, and in the name of Jesus this man who I am sure you guys know from how much he begging out here, was strengthened to walk again. So PLEASE, repent and return, so that your sins may be wiped away, in order that times of refreshing may come from the presence of the Lord.
 [The PI rubs his forehead and walks back to his table, looking a bit confused and stressed.]
 PI: Wait, why would God give someone such a powerful name, and moreso grant power to fishermen, power to do things which are so epic.
-[Everyone on stage is looking at him, as he is looking away. After a few seconds, he turns around and looks at everyone.]
-PI: I need to think, I need to pray, everyone, get out of here. Out, please, get out! {{18}} [Everyone, including the scene actors, exit right.]
-
-## ACT 3 — Before the Religious Leaders (in progress)
-Witness 1: Let's wait for him to finish praying, I think all of this is weighing heavy on him.
-Witness 2: There is something else I need to tell him, this final part reveals how the Lord was glorified in the proclamation of His Word.
-PI: Okay, the Lord answered my distress. Understanding what Peter has said, it was all according to prophecy, these men are truly from God. So tell me, what happened to them, if they are from God who found any fault in them?
-Witness 2: There is one last incident that happened with Peter and John. After Peter preached the Word of the Lord, the crime bosses in the town were not happy about it. It challenged their schemes for honor and fame amidst the crowds. And they would let nothing get in their way.
-Caiaphas and the Sanhedrin: (Jared in Ogre costume) Well, well, well! If it isn't the two insignificant tiny pebbles stuck in the bottom of my ogre shoes. (all the Sanhedrin shout) Peter and John!
-Ogre Sanhedrin: Tell me, why are you attempting once again to dissuade the crowds?! Their honor belongs to us! [Caiaphas and Jared seize Peter and John, laying hands on them zealously]
-Crowds: We know that these men were from God! They were untrained and unlearned, but they spoke clearly about Christ! We believe in their words! We will not follow the crime bosses but only the words of these men. These men proclaim the Lord's Word.
-[Transition to court scene] {{38}}
-Caiaphas: By what power and what name have you healed this lame man?
-Peter: I stand before you today with no power of my own. Only that of Jesus Christ the Nazarene. Whom you killed, and I testify today in this court that you have rejected Him. By His power this man stands in good health. There is salvation in no one else, only in Him.
-Judge Judy: What are we to do with these men, we have nothing to charge them with.
-Caiaphas: This whole thing goes deeper than we thought. Not only do these men have the power to heal the lame and sick. But they claim that they have divine power from Jesus. And Jesus is God.
-Ogre Sanhedrin: This stuff is deep, so many layers… this mystery is too great, too great for my ogre mind to comprehend. It reminds me of a warning my father always used to give me: Ogres are like onions, they have layers.
-
-## Reserve cues
-[Donkey (Max) has no lines yet. Cue ready in case he gets written in.]
-[Ending and bows: still to be written.]
+[Everyone in the stage is looking at him, as he is looking away. After a few seconds, he turns around and looks at everyone.]
+PI: I need to think, I need to pray, everyone, get out of here. Out, please, get out! {{18}} [He directs all these words to everyone, and so everyone, including the scene actors, exit right.]
+## ACT 3 — Before the Religious Leaders
+[The table gets taken away, and then it's moved toward the opposite side, to become the stand where the religious leaders will gather to have a hearing. The religious leaders coming in are: Priscilla, Jared, Max, Ariel] {{38}}
+PI: I have been called to present all the things I have found out, as part of this great, enigmatic case.
+Judge (Priscilla): Bring out Peter and John, in their shackles for their strange teaching.
+[Peter and John come in, handcuffed by prison gaurd .]
+Sanhedrin Guy (Jared): Ok guys, to testify on your behalf, we will first listen to the summary of our detective man here, so please tell us what you have found.
+PI: It was all so confusing, but there is only one answer, these men, these men have been using a name to heal, and in that name they have received powers that are given by only that very name.
+Sanhedrin Guy: Do not say that name. You know what they say, ogres are like onions, they have layers,
+Hudson: Yeah what he said
+Sanhedrin Guy (cont'd): and you don't want to cut into this onion lest you start crying.
+Peter: But there is only one name by which we work! And if we stand in trial for the good deed we have done to that lame man, let it be known that it was done by the awesome, great name of Jesus of Nazareth, whom you crucified, but He now lives.
+PI: That is the main connecting thread, it is the name of Jesus, they are saying that He is the Christ, and that by the Holy Spirit they have this power.
+Sanhedrin Guy: ENOUGH! That's too much stuff you guys saying. We do not want to hear your excusing of your strange activity, give us a moment to convene really quickly.
+[The religious leaders do like a small huddle, and they talk into the microphone.]
+Judge: What should we do then? These people are uneducated fishermen, but they have more confidence in what they say than most politicians who promise $3 gas.
+Sanhedrin Guy: I... I don't know, but we cannot let them keep talking about Jesus anymore,
+Meta: maybe we kill em
+Sanhedrin Guy (cont'd): let us just threaten them, scare them. We cannot deny that that lame man can now walk, in fact he has been walking as if his legs had had no issue ever.
+[Lame Man runs through the background]
+Judge: Yeah let's do it... [They turn to Peter and John and the PI]. Peter and John of Galilee, you guys will STOP talking about Jesus, or we will straight up bring you back here.
+John (Chase): Whether it is right in the sight of God to give heed to you rather than to God, you be the judge; for we cannot stop speaking about what we have seen and heard.
+[The Temple Guard comes in to remove their handcuffs, and the religious leaders leave the scene. Then all the extra witnesses come in (Darin, Arturo, Nalani, Gianna), and they start glorifying God. Peter turns to the PI]
+Peter: What do you think?
+PI: I think it all makes sense, this Jesus is the reason for your guys' boldness, there's no other explanation that I could come to. And it's true, this name is the One that has been prophesied from the very start, it makes so much sense I just...
+Peter: Very cool, now will you commit your life to it? Will you accept and bear the truth?
+[The PI thinks for a bit.]
+PI: There really is no other, better way. [and he daps up Peter and they do the I believe dance.]
 `;
 
 /* =========================================================
@@ -680,13 +688,13 @@ let chipN=0;
 function chipHTML(id){const c=byId[id]; if(!c||!ENABLED.includes(id)) return ''; return `<button class="cue-chip${c.big?' big':''}" data-cue="${id}" data-seq="${chipN++}" title="${esc(c.tip||c.name)}"><span class="n">${id}</span>${esc(c.name)}</button>`;}
 function buildScript(){
   const el=document.getElementById('script');
-  let h='<div class="sc-title">The Case of the Beautiful Gate</div><p class="sc-sub">A mystery/crime comedy based on Acts 2–4 · click any cue to fire it</p>';
+  let h='<div class="sc-title">The Case of the Beautiful Gate</div><p class="sc-sub">A mystery/crime comedy based on Acts 2–4 · script revised Nov 21 · click any cue to fire it</p>';
   SCRIPT.trim().split('\n').forEach(raw=>{
     const line=raw.trim(); if(!line) return;
     const withCues=s=>esc(s).replace(/\{\{(\w+)\}\}/g,(_,id)=>chipHTML(id));
     if(line.startsWith('## ')) h+=`<div class="act">${esc(line.slice(3))}</div>`;
     else if(line.startsWith('[')) h+=`<p class="stage">${withCues(line)}</p>`;
-    else { const m=line.match(/^([A-Z][A-Za-z0-9 ]{0,30}):\s*(.*)$/);
+    else { const m=line.match(/^([A-Z][A-Za-z0-9 ()'’.]{0,40}):\s*(.*)$/);
       if(m) h+=`<p class="line"><span class="who">${esc(m[1])}</span>${withCues(m[2]).replace(/\[([^\]]*)\]/g,'<i style="color:var(--mute)">[$1]</i>')}</p>`;
       else h+=`<p class="stage">${withCues(line)}</p>`; }
   });
@@ -707,7 +715,7 @@ function buildBoard(){
         <div class="row"><button class="btn" data-load="${c.id}">Load sound…</button><button class="btn" data-reset="${c.id}">Use placeholder</button></div>
       </div></div>`;
   });
-  h+='</div><p class="boardnote">Only the big ambience cues are on for now; the rest are held in reserve. Every cue starts with a placeholder sound generated in your browser. To use a real sound, drag an audio file onto a tile, or open ⋯ and choose <b>Load sound</b>. Sounds you load are saved in this browser on this device.</p>';
+  h+='</div><p class="boardnote">Cues without a real sound file use a placeholder generated in your browser. To use a real sound, drag an audio file onto a tile, or open ⋯ and choose <b>Load sound</b>. Sounds you load are saved in this browser on this device.</p>';
   el.innerHTML=h;
 }
 function pct(x){return Math.round(x*100)+'%';}
