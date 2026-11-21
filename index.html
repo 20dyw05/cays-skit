@@ -160,17 +160,17 @@ const CUES=[
  {id:'34',act:3,name:'Dun dun DUN',syn:'dun',stops:['33b'],rev:.5},
  {id:'35',act:3,name:'Scuffle',syn:'scuffle',rev:.2},
  {id:'36',act:3,name:'Crowd cheer',syn:'cheer',rev:.3},
- {id:'37',act:3,name:'Court transition hits',syn:'court',stops:'all',rev:.5,tip:'Or drop a “dun-dun” sound file here.'},
+ {id:'37',act:3,name:'OBJECTION!',syn:'court',stops:'all',big:true,then:[['38',3.5]],rev:.5,tip:'Opens the courtroom. Stops the noir theme; the courtroom underscore (38) starts by itself after it.'},
  {id:'38',act:3,name:'Courtroom underscore',syn:'underscore',loop:true,lvl:.7,rev:.3,stops:'all',tip:'Act 3 opens: the table becomes the leaders’ stand for the hearing.'},
  {id:'39',act:3,name:'Gavel',syn:'gavel',rev:.3},
  {id:'40',act:3,name:'Suspense build',syn:'riser',stops:['38'],rev:.4},
  {id:'41',act:3,name:'Onion punchline',syn:'fanfare',stops:'all',rev:.4,slot:true,tip:'Placeholder fanfare. Drop your own song file here.'},
 
  {id:'D',act:4,name:'Donkey bit',syn:'bouncy',loop:true,lvl:.7,rev:.2,tip:'Max is cast as Donkey but has no lines yet.'},
- {id:'B',act:4,name:'Bows / exit music',syn:'victory',loop:true,stops:'all',lvl:.8,rev:.2},
+ {id:'B',act:3,name:'I’m a Believer (ending)',syn:'victory',stops:'all',lvl:.9,rev:.2,tip:'The “I believe” dance and the ending. Plays the whole song (about 3 minutes); press Fade all to end it sooner.'},
 ];
 // Cues shown on the board / in the script. Everything else in CUES is kept in reserve.
-const ENABLED=['01','03','05','06','07','18','19','22','22b','38'];
+const ENABLED=['01','03','05','06','07','18','19','22','22b','37','38','B'];
 const byId=Object.fromEntries(CUES.map((c,i)=>[c.id,Object.assign(c,{idx:i})]));
 
 /* =========================================================
@@ -241,7 +241,7 @@ PI: Wait, why would God give someone such a powerful name, and moreso grant powe
 [Everyone in the stage is looking at him, as he is looking away. After a few seconds, he turns around and looks at everyone.]
 PI: I need to think, I need to pray, everyone, get out of here. Out, please, get out! {{18}} [He directs all these words to everyone, and so everyone, including the scene actors, exit right.]
 ## ACT 3 — Before the Religious Leaders
-[The table gets taken away, and then it's moved toward the opposite side, to become the stand where the religious leaders will gather to have a hearing. The religious leaders coming in are: Priscilla, Jared, Max, Ariel] {{38}}
+[The table gets taken away, and then it's moved toward the opposite side, to become the stand where the religious leaders will gather to have a hearing. The religious leaders coming in are: Priscilla, Jared, Max, Ariel] {{37}}
 PI: I have been called to present all the things I have found out, as part of this great, enigmatic case.
 Judge (Priscilla): Bring out Peter and John, in their shackles for their strange teaching.
 [Peter and John come in, handcuffed by prison gaurd .]
@@ -266,7 +266,7 @@ Peter: What do you think?
 PI: I think it all makes sense, this Jesus is the reason for your guys' boldness, there's no other explanation that I could come to. And it's true, this name is the One that has been prophesied from the very start, it makes so much sense I just...
 Peter: Very cool, now will you commit your life to it? Will you accept and bear the truth?
 [The PI thinks for a bit.]
-PI: There really is no other, better way. [and he daps up Peter and they do the I believe dance.]
+PI: There really is no other, better way. [and he daps up Peter and they do the I believe dance.] {{B}}
 `;
 
 /* =========================================================
@@ -627,7 +627,7 @@ function play(id,{seq=null}={}){
   v.t0=t; v.dur=dur;
   if(dur!=null) v.timer(setTimeout(()=>v.end(),(dur+.4)*1000));
   v.onEnd=()=>{if(active.get(id)===v) active.delete(id); render();};
-  (cue.then||[]).forEach(([nid,d])=>setTimeout(()=>play(nid),d*1000));
+  (cue.then||[]).forEach(([nid,d])=>v.timer(setTimeout(()=>play(nid),d*1000))); // cancelled if this cue is stopped first
   v.seq=seq; if(seq!=null) setStandby(seq+1); else render();
 }
 function toggle(id,seq=null){
