@@ -119,7 +119,7 @@ const CUES=[
  {id:'01',act:1,name:'Noir detective theme',syn:'noir',loop:true,lvl:.7,rev:.25,stops:'all',tip:'The PI’s office. Plays at lights up and every time the story returns to the office.'},
  {id:'01b',act:1,name:'Rain bed',syn:'rain',loop:true,lvl:.6,rev:0,tip:'Optional, layered under the noir theme.'},
  {id:'02',act:1,name:'Rimshot',syn:'rimshot',rev:.15},
- {id:'03',act:1,name:'Door creak (entrance)',syn:'door',rev:.2,tip:'Theophilus walks in. Plays over the noir theme without stopping it.'},
+ {id:'03',act:1,name:'Door creak (entrance)',syn:'door',rev:.2,tip:'Theophilus walks in with Witness 1. Plays over the noir theme without stopping it.'},
  {id:'04',act:1,name:'Suspense sting',syn:'sting',rev:.35},
  {id:'05',act:1,name:'Flashback ▸ in',syn:'flashIn',stops:['01','01b'],rev:.6,tip:'Fades the office music as the witness starts her story.'},
  {id:'06',act:1,name:'Festival crowd',syn:'crowd',loop:true,lvl:.8,rev:.2,stops:'all',tip:'Pentecost flashback. Comes back after the hurricane.'},
@@ -139,7 +139,7 @@ const CUES=[
  {id:'17',act:1,name:'Fellowship montage',syn:'montage',loop:true,lvl:.7,rev:.35},
  {id:'18',act:1,name:'Flashback ◂ out',syn:'flashOut',stops:'all',then:[['01',1.4]],rev:.6,tip:'Stops everything, then brings the noir theme back.'},
 
- {id:'19',act:2,name:'Door knock + creak',syn:'door',rev:.2},
+ {id:'19',act:2,name:'Door creak (2nd entrance)',syn:'door',rev:.2,tip:'Theophilus walks in with Witness 2. Plays over the noir theme without stopping it.'},
  {id:'20',act:2,name:'Clock ticking (speeds up)',syn:'clock',loop:true,rev:.1},
  {id:'21',act:2,name:'Record scratch → silence',syn:'scratch',stops:'all',hard:true,big:true,rev:.1,tip:'Kills everything, including the noir theme. Hold the silence.'},
  {id:'22',act:2,name:'Flashback ▸ in',syn:'flashIn',stops:'all',then:[['22b',.9]],rev:.6,tip:'Street ambience starts automatically after it.'},
@@ -170,7 +170,7 @@ const CUES=[
  {id:'B',act:4,name:'Bows / exit music',syn:'victory',loop:true,stops:'all',lvl:.8,rev:.2},
 ];
 // Cues shown on the board / in the script. Everything else in CUES is kept in reserve.
-const ENABLED=['01','03','06','07','22b','38'];
+const ENABLED=['01','03','06','07','19','22b','38'];
 const byId=Object.fromEntries(CUES.map((c,i)=>[c.id,Object.assign(c,{idx:i})]));
 
 /* =========================================================
@@ -218,7 +218,7 @@ Witness 1: And everyone who believed, started serving one another, we ate togeth
 PI: Wait, hold on, hold on, there was a lot in all of that. [The PI leans onto his table with most of his weight, thinking out loud] So there's a Jesus, who gives powers? And not only that He is able to forgive sins?
 Witness 1: Yes, the Spirit of God gave them the power to speak tongues, and through it they have performed many miracles, which would include the healing at the Beautiful Gate.
 PI: But why would God give people the power to speak in tongues, like within this week? What is this all about, what is the motive?
-[As the PI is confused, Theophilus comes in with another witness (Gianna), who will testify on the healing of the Lame Man.] {{03}}
+[As the PI is confused, Theophilus comes in with another witness (Gianna), who will testify on the healing of the Lame Man.] {{19}}
 Theophilus: We got an actual witness for the healing incident.
 PI: Ok, alright yeah let's hear her out, what happened, did you hear anyone speaking Chinese?
 Witness 2: What? Uh, I don't remember, I don't think so? What happened was as I was walking home, I passed by the Beautiful Gate, because it's sort of on the way, if you don't detour too much from the traffic of crowds, it saves you like 3 minutes and...
