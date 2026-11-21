@@ -119,7 +119,7 @@ const CUES=[
  {id:'01',act:1,name:'Noir detective theme',syn:'noir',loop:true,lvl:.7,rev:.25,stops:'all',tip:'The PI’s office. Plays at lights up and every time the story returns to the office.'},
  {id:'01b',act:1,name:'Rain bed',syn:'rain',loop:true,lvl:.6,rev:0,tip:'Optional, layered under the noir theme.'},
  {id:'02',act:1,name:'Rimshot',syn:'rimshot',rev:.15},
- {id:'03',act:1,name:'Door knock + creak',syn:'door',rev:.2},
+ {id:'03',act:1,name:'Door creak (entrance)',syn:'door',rev:.2,tip:'Theophilus walks in. Plays over the noir theme without stopping it.'},
  {id:'04',act:1,name:'Suspense sting',syn:'sting',rev:.35},
  {id:'05',act:1,name:'Flashback ▸ in',syn:'flashIn',stops:['01','01b'],rev:.6,tip:'Fades the office music as the witness starts her story.'},
  {id:'06',act:1,name:'Festival crowd',syn:'crowd',loop:true,lvl:.8,rev:.2,stops:'all',tip:'Pentecost flashback. Comes back after the hurricane.'},
@@ -170,7 +170,7 @@ const CUES=[
  {id:'B',act:4,name:'Bows / exit music',syn:'victory',loop:true,stops:'all',lvl:.8,rev:.2},
 ];
 // Cues shown on the board / in the script. Everything else in CUES is kept in reserve.
-const ENABLED=['01','06','07','22b','38'];
+const ENABLED=['01','03','06','07','22b','38'];
 const byId=Object.fromEntries(CUES.map((c,i)=>[c.id,Object.assign(c,{idx:i})]));
 
 /* =========================================================
@@ -180,7 +180,7 @@ const SCRIPT=`
 ## ACT 1 — Intro and Pentecost
 [Luke walks towards his desk and taps at a piece of evidence that is troubling him: a photo of the place where the lame man used to be placed every day.] {{01}}
 PI: This doesn't make sense, how is it possible that a man who was lame (TO AUDIENCE: meaning he couldn't walk, right, not that he was uncool or something), is now able to walk? All the evidence is pointing to supernatural reasons, but why would this happen, why now?
-[Theophilus comes in accompanied by Witness 1, one of those that now believes (Nalani)]
+[Theophilus comes in accompanied by Witness 1, one of those that now believes (Nalani)] {{03}}
 Theophilus: I have found the witness who claims to know some people involved in the incident.
 PI: Yes, please come in, sorry my mind and my desk are both scattered right now, hopefully you can clarify things for me a little bit.
 Witness 1: Yes, thank you, I don't know if I can clarify things, but I can let you know what I have seen.
@@ -218,7 +218,7 @@ Witness 1: And everyone who believed, started serving one another, we ate togeth
 PI: Wait, hold on, hold on, there was a lot in all of that. [The PI leans onto his table with most of his weight, thinking out loud] So there's a Jesus, who gives powers? And not only that He is able to forgive sins?
 Witness 1: Yes, the Spirit of God gave them the power to speak tongues, and through it they have performed many miracles, which would include the healing at the Beautiful Gate.
 PI: But why would God give people the power to speak in tongues, like within this week? What is this all about, what is the motive?
-[As the PI is confused, Theophilus comes in with another witness (Gianna), who will testify on the healing of the Lame Man.]
+[As the PI is confused, Theophilus comes in with another witness (Gianna), who will testify on the healing of the Lame Man.] {{03}}
 Theophilus: We got an actual witness for the healing incident.
 PI: Ok, alright yeah let's hear her out, what happened, did you hear anyone speaking Chinese?
 Witness 2: What? Uh, I don't remember, I don't think so? What happened was as I was walking home, I passed by the Beautiful Gate, because it's sort of on the way, if you don't detour too much from the traffic of crowds, it saves you like 3 minutes and...
