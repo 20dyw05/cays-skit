@@ -121,7 +121,7 @@ const CUES=[
  {id:'02',act:1,name:'Rimshot',syn:'rimshot',rev:.15},
  {id:'03',act:1,name:'Door creak (entrance)',syn:'door',rev:.2,tip:'Theophilus walks in with Witness 1. Plays over the noir theme without stopping it.'},
  {id:'04',act:1,name:'Suspense sting',syn:'sting',rev:.35},
- {id:'05',act:1,name:'Flashback ▸ in',syn:'flashIn',stops:['01','01b'],rev:.6,tip:'Fades the office music as the witness starts her story.'},
+ {id:'05',act:1,name:'Flashback harp ▸ in',syn:'flashIn',stops:'all',then:[['06',2.2]],rev:.6,tip:'Fades out the office music. The festival crowd (06) starts by itself as the harp ends.'},
  {id:'06',act:1,name:'Festival crowd',syn:'crowd',loop:true,lvl:.8,rev:.2,stops:'all',tip:'Pentecost flashback. Comes back after the hurricane.'},
  {id:'07',act:1,name:'HURRICANE wind',syn:'wind',loop:true,lvl:1,big:true,rev:.25,stops:'all',tip:'Bring it in hard. The festival crowd cue after “tinnitus” cuts it.'},
  {id:'08',act:1,name:'Tinnitus ring',syn:'ring',stops:['07','06'],hard:true,rev:0,tip:'Hard-cuts the wind and crowd.'},
@@ -137,12 +137,12 @@ const CUES=[
  {id:'15',act:1,name:'Sizzle (“cooked”)',syn:'sizzle',rev:.1},
  {id:'16',act:1,name:'Splash + swell',syn:'splash',stops:['13'],rev:.5},
  {id:'17',act:1,name:'Fellowship montage',syn:'montage',loop:true,lvl:.7,rev:.35},
- {id:'18',act:1,name:'Flashback ◂ out',syn:'flashOut',stops:'all',then:[['01',1.4]],rev:.6,tip:'Stops everything, then brings the noir theme back.'},
+ {id:'18',act:1,name:'Flashback harp ◂ out',syn:'flashOut',stops:'all',then:[['01',1.8]],rev:.6,tip:'The harp reversed. Fades out the scene, then the noir theme (01) comes back by itself.'},
 
  {id:'19',act:2,name:'Door creak (2nd entrance)',syn:'door',rev:.2,tip:'Theophilus walks in with Witness 2. Plays over the noir theme without stopping it.'},
  {id:'20',act:2,name:'Clock ticking (speeds up)',syn:'clock',loop:true,rev:.1},
  {id:'21',act:2,name:'Record scratch → silence',syn:'scratch',stops:'all',hard:true,big:true,rev:.1,tip:'Kills everything, including the noir theme. Hold the silence.'},
- {id:'22',act:2,name:'Flashback ▸ in',syn:'flashIn',stops:'all',then:[['22b',.9]],rev:.6,tip:'Street ambience starts automatically after it.'},
+ {id:'22',act:2,name:'Flashback harp ▸ in',syn:'flashIn',stops:'all',then:[['22b',2.2]],rev:.6,tip:'Fades out the office music. The street ambience (22b) starts by itself as the harp ends.'},
  {id:'22b',act:2,name:'Street ambience (Beautiful Gate)',syn:'street',loop:true,lvl:.7,rev:.2,stops:'all'},
  {id:'23',act:2,name:'Flex!',syn:'flex',rev:.4},
  {id:'24',act:2,name:'Coins → womp womp',syn:'coinWomp',rev:.25},
@@ -170,7 +170,7 @@ const CUES=[
  {id:'B',act:4,name:'Bows / exit music',syn:'victory',loop:true,stops:'all',lvl:.8,rev:.2},
 ];
 // Cues shown on the board / in the script. Everything else in CUES is kept in reserve.
-const ENABLED=['01','03','06','07','19','22b','38'];
+const ENABLED=['01','03','05','06','07','18','19','22','22b','38'];
 const byId=Object.fromEntries(CUES.map((c,i)=>[c.id,Object.assign(c,{idx:i})]));
 
 /* =========================================================
@@ -190,8 +190,8 @@ Witness 1: I understand, standing completely OK.
 PI: Let us get this quick, the hearing before the court of powerful elites is gonna happen in a couple of hours.
 Witness 1: I was not there for the main case in question, but I do think there's something that happened not too long before which is important to what happened with that lame guy.
 PI: [rubs his mustache and nods his head dramatically] Anything bro, anything that would help us get any clarity to this miraculous act.
-[Now, as the Witness describes what is going on, the scene plays out next to them. People come in from the side and take their positions.]
-Witness 1: It was the day of Pentecost, {{06}} and there were a lot of people, some people came from a couple blocks away, other people travelled from all the way in Asia, all were hoping to celebrate this special festival. And the twelve disciples of Jesus were there, including Peter and John.
+[Now, as the Witness describes what is going on, the scene plays out next to them. People come in from the side and take their positions.] {{05}}
+Witness 1: It was the day of Pentecost, and there were a lot of people, some people came from a couple blocks away, other people travelled from all the way in Asia, all were hoping to celebrate this special festival. And the twelve disciples of Jesus were there, including Peter and John.
 [Next to them, as if on a different stage, the Apostles (Peter, John, and another one) gather together sitting on the ground, and other people are around talking to each other.]
 Witness 1: And we were everybody minding our own business, kind of, celebrating and praying, and then all of a sudden like a massive hurricane comes in, {{07}} it kind of gave me tinnitus. {{06}}
 [At "a massive hurricane comes in", a huge sound comes in, and then the Holy Spirit (Quinton) descends.]
@@ -212,7 +212,7 @@ Peter: But this man– Jesus, this man performed many miracles that proved who H
 Guy 2: [In agony and worry] What do we do, then? Are we cooked with the sauce?
 Peter: Repent, and be baptized because of your forgiveness.
 Witness 1: And everyone who believed, started serving one another, we ate together like every day, and the apostles continued to show great signs, I haven't gotten to see all of them though.
-[Everyone except Witness 1 and the PI exit the scene] {{01}}
+[Everyone except Witness 1 and the PI exit the scene] {{18}}
 
 ## ACT 2 — Healing of the Lame Man
 PI: Wait, hold on, hold on, there was a lot in all of that. [The PI leans onto his table with most of his weight, thinking out loud] So there's a Jesus, who gives powers? And not only that He is able to forgive sins?
@@ -223,7 +223,7 @@ Theophilus: We got an actual witness for the healing incident.
 PI: Ok, alright yeah let's hear her out, what happened, did you hear anyone speaking Chinese?
 Witness 2: What? Uh, I don't remember, I don't think so? What happened was as I was walking home, I passed by the Beautiful Gate, because it's sort of on the way, if you don't detour too much from the traffic of crowds, it saves you like 3 minutes and...
 PI: Lock-in bro. We don't have too much time this skit has to be 10 minutes.
-[As the Witness describes this next scene, that scene unfolds right next to them, but now there is a lame guy on the floor.] {{22b}}
+[As the Witness describes this next scene, that scene unfolds right next to them, but now there is a lame guy on the floor.] {{22}}
 Witness 2: Ohh yeah, sorry. So, at the gate there was a lame man, always see him there, but then there were two men, who I hadn't seen before, and they approached the gate man, and he was like "can you give me some money, some gold," but then they replied...
 Peter: Look at us! [Peter (Melvin) flexes his nonexistent muscles]
 Lame: [Looks at them for a bit, then signals to his hand, expecting them to drop some cash]
@@ -239,7 +239,7 @@ Peter: You guys think this was by our own power. But nah, the power that healed 
 [The PI rubs his forehead and walks back to his table, looking a bit confused and stressed.]
 PI: Wait, why would God give someone such a powerful name, and moreso grant power to fishermen, power to do things which are so epic.
 [Everyone on stage is looking at him, as he is looking away. After a few seconds, he turns around and looks at everyone.]
-PI: I need to think, I need to pray, everyone, get out of here. Out, please, get out! {{01}} [Everyone, including the scene actors, exit right.]
+PI: I need to think, I need to pray, everyone, get out of here. Out, please, get out! {{18}} [Everyone, including the scene actors, exit right.]
 
 ## ACT 3 — Before the Religious Leaders (in progress)
 Witness 1: Let's wait for him to finish praying, I think all of this is weighing heavy on him.
