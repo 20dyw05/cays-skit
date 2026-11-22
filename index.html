@@ -24,6 +24,12 @@
   .btn{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font-size:13px}
   .btn:hover{border-color:#3a414a}
   .btn.red{border-color:#5a2a2a;color:#ffb3b3}
+  .slidebox{display:flex;align-items:center;gap:6px}
+  .slidebox .lbl{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#6aa8ff}
+  .slidebox .what{font-weight:600;font-size:13px;min-width:84px;text-align:center}
+  .btn.sm{padding:5px 8px}
+  .btn.on{background:#3a1d1d;border-color:#7a3333}
+  .slidebox .dot{width:8px;height:8px;border-radius:50%;background:#555}
   .vol{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--mute)}
   input[type=range]{accent-color:var(--amber);width:100px}
   .keys{font-size:11.5px;color:var(--dim);width:100%}
@@ -100,8 +106,9 @@
   <label class="vol">Master <input type="range" id="master" min="0" max="1.5" step="0.01"><span class="vv" id="masterv" title="Double-click to reset to 100%"></span></label>
   <button class="btn" id="resetvols" title="Set every cue back to 100%">Reset cue volumes</button>
   <label class="vol"><input type="checkbox" id="follow"> Follow script</label>
+  <div class="slidebox"><span class="lbl">Slide</span><button class="btn sm" id="sprev" title="Previous slide ( [ )">◀</button><span class="what" id="sWhat">Title</span><button class="btn sm" id="snext" title="Next slide ( ] )">▶</button><button class="btn sm" id="sblack" title="Black screen (B)">Black</button><button class="btn" id="sopen" title="Open the slides window for the projector">Open slides window</button></div>
   <button class="btn" id="viewtoggle">Show board</button>
-  <div class="keys"><kbd>Space</kbd> GO &nbsp; <kbd>↑</kbd><kbd>↓</kbd> move standby &nbsp; <kbd>Esc</kbd> fade all &nbsp; <kbd>Shift</kbd>+<kbd>Esc</kbd> stop now &nbsp; <kbd>-</kbd><kbd>=</kbd> master volume &nbsp;·&nbsp; Double-click any % to reset it · Click a playing cue to stop it · Drag an audio file onto any tile to replace its sound</div>
+  <div class="keys"><kbd>Space</kbd> GO &nbsp; <kbd>↑</kbd><kbd>↓</kbd> move standby &nbsp; <kbd>Esc</kbd> fade all &nbsp; <kbd>Shift</kbd>+<kbd>Esc</kbd> stop now &nbsp; <kbd>-</kbd><kbd>=</kbd> master volume &nbsp; <kbd>[</kbd><kbd>]</kbd> slide &nbsp; <kbd>B</kbd> black screen &nbsp;·&nbsp; Double-click any % to reset it · Click a playing cue to stop it · Drag an audio file onto any tile to replace its sound</div>
 </header>
 <div id="now"><span class="empty">Nothing playing</span></div>
 <main>
@@ -607,6 +614,19 @@ class Voice{
     this.onEnd&&this.onEnd();
   }
 }
+/* ===== SLIDES (projector window) ===== */
+const SLIDES=[['title','Title'],['office','PI’s office'],['pentecost','Pentecost'],['wind','Wind & fire'],['gate','Beautiful Gate'],['healing','Healing'],['court','Courtroom'],['end','Case closed'],['black','Black']];
+// cue id -> [slide, transition]
+const CUE_SLIDE={'01':['office','fade'],'05':['pentecost','dream'],'07':['wind','cut'],'06':['pentecost','fade'],'18':['office','dream'],'22':['gate','dream'],'25':['healing','fade'],'37':['court','objection'],'B':['end','fade']};
+let slide='title', preBlack='title', bc=null; try{bc=new BroadcastChannel('cays-skit');}catch(e){}
+function setSlide(id,fx='fade'){
+  slide=id; if(id!=='black') preBlack=id;
+  bc&&bc.postMessage({type:'slide',id,fx});
+  const n=SLIDES.find(x=>x[0]===id); document.getElementById('sWhat').textContent=n?n[1]:id;
+  document.getElementById('sblack').classList.toggle('on',id==='black');
+}
+function stepSlide(d){const i=SLIDES.findIndex(x=>x[0]===slide); const n=SLIDES[Math.max(0,Math.min(SLIDES.length-1,i+d))]; setSlide(n[0],'fade');}
+if(bc) bc.onmessage=e=>{if(e.data&&e.data.type==='hello') setSlide(slide,'cut');};
 function cueVol(id){const c=byId[id]; return (c.lvl??.85)*(settings.cues[id]?.vol??1);}
 function cueLoops(id){const s=settings.cues[id]; return s&&s.loop!=null? s.loop : !!byId[id].loop;}
 function play(id,{seq=null}={}){
@@ -616,6 +636,7 @@ function play(id,{seq=null}={}){
   stops.forEach(s=>{if(s!==id&&active.has(s)) active.get(s).stop(cue.hard?.04:.7);});
   if(active.has(id)) active.get(id).stop(.05);
   const v=new Voice(cue,cueVol(id)); active.set(id,v);
+  if(CUE_SLIDE[id]) setSlide(...CUE_SLIDE[id]);
   const t=ctx.currentTime+.03; let dur;
   const f=files[id];
   if(f&&f.buffer){
@@ -749,7 +770,8 @@ function render(){
   });
   document.querySelectorAll('[data-tile]').forEach(t=>{
     const id=t.dataset.tile, c=byId[id], f=files[id];
-    t.querySelector('.meta').innerHTML=(cueLoops(id)?'loop':'one-shot')+' · '+(f?`<span class="file">${esc(f.name)}</span>`:(c.slot?'placeholder: add a file':'placeholder'));
+    const sl=CUE_SLIDE[id]&&SLIDES.find(x=>x[0]===CUE_SLIDE[id][0]);
+    t.querySelector('.meta').innerHTML=(sl?`<span style="color:#6aa8ff">▣ ${sl[1]}</span> · `:'')+(cueLoops(id)?'loop':'one-shot')+' · '+(f?`<span class="file">${esc(f.name)}</span>`:(c.slot?'placeholder: add a file':'placeholder'));
   });
   const now=document.getElementById('now');
   if(!active.size) now.innerHTML='<span class="empty">Nothing playing</span>';
@@ -810,6 +832,9 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='Escape'){e.preventDefault(); fadeAll(e.shiftKey?.03:1.5);}
   else if(e.key==='ArrowDown'){e.preventDefault(); setStandby(standby+1);}
   else if(e.key==='ArrowUp'){e.preventDefault(); setStandby(standby-1);}
+  else if(e.key===']'){stepSlide(1);}
+  else if(e.key==='['){stepSlide(-1);}
+  else if(e.key==='b'||e.key==='B'){setSlide(slide==='black'?preBlack:'black','fade');}
   else if(e.key==='-'||e.key==='_'){setMaster(settings.master-.05);}
   else if(e.key==='='||e.key==='+'){setMaster(settings.master+.05);}
 });
@@ -826,7 +851,11 @@ window.__renderCue=async(id,secs=6)=>{
   return {id,peak:+peak.toFixed(3),rms:+Math.sqrt(sum/d.length).toFixed(4)};
 };
 
-buildScript(); buildBoard(); fitLayout(); render(); initAudio(); loadAllFiles();
+document.getElementById('sopen').onclick=()=>window.open('slides.html','cays-slides','popup,width=1280,height=720');
+document.getElementById('snext').onclick=()=>stepSlide(1);
+document.getElementById('sprev').onclick=()=>stepSlide(-1);
+document.getElementById('sblack').onclick=()=>setSlide(slide==='black'?preBlack:'black','fade');
+buildScript(); buildBoard(); fitLayout(); render(); initAudio(); loadAllFiles(); setSlide('title','cut');
 </script>
 </body>
 </html>
