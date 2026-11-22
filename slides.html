@@ -68,10 +68,10 @@
 
   /* END */
   #s-end{background:radial-gradient(ellipse at 50% 40%,#2a2620 0%,#0d0c0a 75%)}
-  .closed{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-12deg) scale(3);opacity:0;border:.7vw solid #c42626;color:#c42626;font:900 8vw "Courier New",monospace;padding:.6vw 3vw;letter-spacing:.1em;white-space:nowrap}
+  .closed{position:absolute;left:50%;top:66%;transform:translate(-50%,-50%) rotate(-8deg) scale(3);opacity:0;border:.7vw solid #c42626;color:#c42626;background:rgba(20,16,12,.25);font:900 7vw "Courier New",monospace;padding:.6vw 3vw;letter-spacing:.1em;white-space:nowrap}
   #s-end.on .closed{animation:slam .5s .6s cubic-bezier(.2,1.6,.4,1) forwards}
-  @keyframes slam{to{opacity:.92;transform:translate(-50%,-50%) rotate(-12deg) scale(1)}}
-  .verse{position:absolute;left:0;right:0;bottom:12vh;text-align:center;font:italic 2vw Georgia,serif;color:#e9e2cf;opacity:0}
+  @keyframes slam{to{opacity:.95;transform:translate(-50%,-50%) rotate(-8deg) scale(1)}}
+  .verse{position:absolute;left:0;right:0;bottom:5vh;text-align:center;font:italic 2vw Georgia,serif;color:#e9e2cf;opacity:0}
   #s-end.on .verse{animation:fadein 1.5s 1.6s forwards}
   @keyframes fadein{to{opacity:.9}}
 
@@ -192,7 +192,7 @@
 let current=null;
 function show(id,fx='fade'){
   const el=document.getElementById('s-'+id); if(!el) return;
-  document.body.classList.remove('fx-cut','fx-dream'); if(fx!=='fade') document.body.classList.add('fx-'+fx);
+  document.body.classList.remove('fx-cut','fx-dream'); if(fx==='objection') document.body.classList.add('fx-cut'); else if(fx!=='fade') document.body.classList.add('fx-'+fx);
   document.querySelectorAll('.slide.on').forEach(s=>{if(s!==el) s.classList.remove('on');});
   if(id==='end'&&current!=='end'){el.classList.remove('on'); void el.offsetWidth;}
   el.classList.add('on'); current=id;
