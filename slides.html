@@ -75,6 +75,10 @@
   #s-end.on .verse{animation:fadein 1.5s 1.6s forwards}
   @keyframes fadein{to{opacity:.9}}
 
+  .img{position:absolute;inset:-2%;background-size:cover;background-position:center;animation:kb 45s ease-in-out infinite alternate}
+  @keyframes kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.08) translate(-1.5%,-1%)}}
+  .shade{position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.55))}
+  .gust.soft{opacity:.5}
   #s-black{background:#000}
   #hint{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9;background:rgba(10,12,14,.92);color:#e9e6df;font:16px/1.5 system-ui,sans-serif;padding:22px 26px;border-radius:12px;border:1px solid #333;max-width:460px;text-align:center;cursor:default}
   #hint b{color:#f2b33d}
@@ -87,6 +91,7 @@
 
 <!-- TITLE -->
 <section class="slide" id="s-title">
+  <div class="img" style="background-image:url(images/office_night.jpg);filter:blur(6px) brightness(.45)"></div>
   <div class="folder">
     <div class="lbl">CASE FILE NO. ACTS 3:1</div>
     <div class="stamp">CONFIDENTIAL</div>
@@ -97,75 +102,43 @@
 
 <!-- OFFICE -->
 <section class="slide" id="s-office">
-  <div class="window"><div class="rain"></div><div class="rain r2"></div></div>
-  <div class="lamp flicker"></div>
-  <div class="blinds"></div>
+  <div class="img" style="background-image:url(images/office_night.jpg)"></div><div class="shade"></div>
   <div class="cap">Office of the Private Investigator<small>Jerusalem · Night</small></div>
 </section>
 
 <!-- PENTECOST -->
 <section class="slide" id="s-pentecost">
-  <div class="motes"></div>
-  <svg class="bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice"><g fill="#2a1420" opacity=".55"><path d="M0 640 L120 640 L120 560 L160 540 L200 560 L200 610 L330 610 L330 500 L350 470 L370 500 L370 600 L520 600 L520 580 Q560 520 600 580 L600 620 L760 620 L760 540 L820 540 L820 600 L960 600 L960 520 L990 490 L1020 520 L1020 600 L1180 600 L1180 570 Q1230 500 1280 570 L1280 620 L1420 620 L1420 560 L1470 560 L1470 630 L1600 630 L1600 900 L0 900Z"/></g><g fill="#1a0c14"><path d="M0 720 L90 720 L90 660 L150 660 L150 700 L260 700 L260 640 L300 610 L340 640 L340 700 L470 700 Q520 630 570 700 L700 700 L700 650 L740 650 L740 610 L780 650 L780 700 L900 700 L900 660 Q960 590 1020 660 L1020 710 L1150 710 L1150 640 L1200 640 L1200 700 L1330 700 L1330 670 Q1380 620 1430 670 L1430 720 L1600 720 L1600 900 L0 900Z"/><rect x="0" y="760" width="1600" height="140"/></g></svg>
+  <div class="img" style="background-image:url(images/festival.jpg)"></div><div class="shade"></div><div class="motes"></div>
   <div class="cap">Jerusalem<small>The Day of Pentecost</small></div>
 </section>
 
 <!-- WIND + FIRE -->
 <section class="slide" id="s-wind">
-  <div class="shake" style="position:absolute;inset:0">
-    <svg class="bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice"><g fill="#08050a"><path d="M0 720 L90 720 L90 660 L150 660 L150 700 L260 700 L260 640 L300 610 L340 640 L340 700 L470 700 Q520 630 570 700 L700 700 L700 650 L740 650 L740 610 L780 650 L780 700 L900 700 L900 660 Q960 590 1020 660 L1020 710 L1150 710 L1150 640 L1200 640 L1200 700 L1330 700 L1330 670 Q1380 620 1430 670 L1430 720 L1600 720 L1600 900 L0 900Z"/></g></svg>
-    <div class="flames"></div>
-    <div class="gust"></div><div class="gust g2"></div>
-  </div>
+  <div class="shake" style="position:absolute;inset:0"><div class="img" style="background-image:url(images/wind_fire.jpg)"></div><div class="gust soft"></div></div>
 </section>
 
 <!-- GATE -->
 <section class="slide" id="s-gate">
-  <svg class="bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
-    <defs><linearGradient id="gold" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f3d27a"/><stop offset="1" stop-color="#b8842e"/></linearGradient>
-    <linearGradient id="stone" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e8dcc0"/><stop offset="1" stop-color="#b9a780"/></linearGradient></defs>
-    <rect x="300" y="170" width="1000" height="560" fill="url(#stone)"/>
-    <rect x="280" y="150" width="1040" height="40" fill="#cdbb92"/>
-    <path d="M560 730 L560 400 Q800 200 1040 400 L1040 730Z" fill="#5a3b1c"/>
-    <path d="M580 730 L580 410 Q800 230 1020 410 L1020 730Z" fill="url(#gold)"/>
-    <line x1="800" y1="300" x2="800" y2="730" stroke="#8a5f22" stroke-width="6"/>
-    <g stroke="#a7772c" stroke-width="4" fill="none" opacity=".8"><path d="M620 470 h140 v220 h-140z"/><path d="M840 470 h140 v220 h-140z"/><circle cx="690" cy="420" r="28"/><circle cx="910" cy="420" r="28"/></g>
-    <g fill="#d9c9a3"><rect x="360" y="230" width="70" height="500"/><rect x="1170" y="230" width="70" height="500"/></g>
-    <g fill="#c7b48a"><rect x="200" y="730" width="1200" height="30"/><rect x="150" y="760" width="1300" height="30"/><rect x="100" y="790" width="1400" height="110"/></g>
-  </svg>
-  <div class="cap" style="color:#2b2114;text-shadow:0 1px 8px rgba(255,255,255,.6)">The Beautiful Gate<small>The Temple · 3 o'clock, the hour of prayer</small></div>
+  <div class="img" style="background-image:url(images/gate.jpg)"></div><div class="shade"></div>
+  <div class="cap">The Beautiful Gate<small>The Temple · 3 o'clock, the hour of prayer</small></div>
 </section>
 
 <!-- HEALING -->
 <section class="slide" id="s-healing">
-  <svg class="bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
-    <rect x="300" y="170" width="1000" height="560" fill="#efe5cd"/><rect x="280" y="150" width="1040" height="40" fill="#e0d2b0"/>
-    <path d="M560 730 L560 400 Q800 200 1040 400 L1040 730Z" fill="#8a6a3c"/><path d="M580 730 L580 410 Q800 230 1020 410 L1020 730Z" fill="#ffe7a0"/>
-    <g fill="#e6dabd"><rect x="360" y="230" width="70" height="500"/><rect x="1170" y="230" width="70" height="500"/></g>
-    <g fill="#ddd0ad"><rect x="200" y="730" width="1200" height="30"/><rect x="150" y="760" width="1300" height="30"/><rect x="100" y="790" width="1400" height="110"/></g>
-  </svg>
-  <div class="rays"></div><div class="glow"></div>
+  <div class="img" style="background-image:url(images/gate_healing.jpg)"></div><div class="glow" style="opacity:.35;mix-blend-mode:screen"></div>
 </section>
 
 <!-- COURT -->
 <section class="slide" id="s-court">
-  <svg class="bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
-    <g fill="#4a2018"><rect x="0" y="0" width="1600" height="900" opacity=".0"/></g>
-    <g fill="#2a110d"><rect x="120" y="80" width="90" height="640"/><rect x="420" y="80" width="90" height="640"/><rect x="1090" y="80" width="90" height="640"/><rect x="1390" y="80" width="90" height="640"/></g>
-    <g fill="#5b2a1c"><rect x="100" y="60" width="1400" height="40"/></g>
-    <path d="M600 330 h400 v60 h-400z" fill="#6b3a22"/>
-    <path d="M520 390 h560 v330 h-560z" fill="#5a2e1a"/>
-    <path d="M540 410 h520 v290 h-520z" fill="#4a2414" />
-    <circle cx="800" cy="250" r="70" fill="#c9a24a" opacity=".85"/><path d="M800 200 v100 M760 230 h80 M770 230 l-15 40 h30z M830 230 l-15 40 h30z" stroke="#4a2414" stroke-width="6" fill="#4a2414"/>
-    <rect x="0" y="720" width="1600" height="180" fill="#1a0a07"/>
-  </svg>
+  <div class="img" style="background-image:url(images/sanhedrin.jpg)"></div><div class="shade"></div>
   <div class="cap">The Sanhedrin<small>Hearing in session</small></div>
   <div class="obj" id="obj"><svg viewBox="0 0 1000 420"><path d="M40 210 L130 120 L110 40 L240 90 L330 20 L380 100 L520 30 L560 110 L700 40 L720 120 L880 70 L850 160 L970 190 L870 250 L940 340 L800 320 L760 400 L640 330 L520 400 L460 320 L320 390 L300 310 L150 360 L170 280 L30 280 L120 230Z" fill="#fff" stroke="#111" stroke-width="10" stroke-linejoin="round"/><text x="500" y="250" text-anchor="middle" font-family="Impact,'Arial Black',sans-serif" font-size="128" fill="#d81f1f" stroke="#111" stroke-width="5" font-style="italic" letter-spacing="2">OBJECTION!</text></svg></div>
 </section>
 
 <!-- END -->
 <section class="slide" id="s-end">
-  <div class="folder" style="opacity:.55"><div class="lbl">CASE FILE NO. ACTS 3:1</div><h1>The Case of the Beautiful Gate</h1></div>
+  <div class="img" style="background-image:url(images/office_dawn.jpg);filter:brightness(.6)"></div>
+  <div class="folder" style="opacity:.85"><div class="lbl">CASE FILE NO. ACTS 3:1</div><h1>The Case of the Beautiful Gate</h1></div>
   <div class="closed">CASE CLOSED</div>
   <div class="verse">“There is salvation in no one else.” — Acts 4:12</div>
 </section>
@@ -185,7 +158,7 @@
 (function(){
   const m=document.querySelector('#s-pentecost .motes');
   for(let i=0;i<40;i++){const d=document.createElement('i'); d.style.left=Math.random()*100+'vw'; d.style.top=(50+Math.random()*50)+'vh'; d.style.animationDelay=(-Math.random()*9)+'s'; d.style.animationDuration=(7+Math.random()*6)+'s'; m.appendChild(d);}
-  const f=document.querySelector('#s-wind .flames');
+  const f=document.querySelector('#s-wind .flames'); if(f)
   for(let i=0;i<9;i++){const d=document.createElement('div'); d.className='flame'; d.style.left=(8+i*10.5)+'vw'; d.style.top=(Math.random()*6)+'vh'; d.style.animationDelay=(-Math.random())+'s'; d.style.animationDuration=(.35+Math.random()*.3)+'s'; f.appendChild(d);}
 })();
 
