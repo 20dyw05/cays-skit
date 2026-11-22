@@ -121,7 +121,7 @@ const CUES=[
  {id:'02',act:1,name:'Rimshot',syn:'rimshot',rev:.15},
  {id:'03',act:1,name:'Door creak (entrance)',syn:'door',rev:.2,tip:'Theophilus walks in with Witness 1. Plays over the noir theme without stopping it.'},
  {id:'04',act:1,name:'Suspense sting',syn:'sting',rev:.35},
- {id:'05',act:1,name:'Flashback harp ▸ in',syn:'flashIn',stops:'all',then:[['06',2.2]],rev:.6,tip:'Fades out the office music. The festival crowd (06) starts by itself as the harp ends.'},
+ {id:'05',act:1,name:'Flashback harp ▸ in',syn:'flashIn',stops:'all',rev:.6,tip:'Fades out the office music. Start the festival crowd (06) when you’re ready.'},
  {id:'06',act:1,name:'Festival crowd',syn:'crowd',loop:true,lvl:.8,rev:.2,stops:'all',tip:'Pentecost flashback. Comes back after the hurricane.'},
  {id:'07',act:1,name:'HURRICANE wind',syn:'wind',lvl:1,big:true,rev:.25,stops:'all',tip:'About 22 seconds, then dies down by itself. The festival crowd cue after “tinnitus” cuts it sooner.'},
  {id:'08',act:1,name:'Tinnitus ring',syn:'ring',stops:['07','06'],hard:true,rev:0,tip:'Hard-cuts the wind and crowd.'},
@@ -137,12 +137,12 @@ const CUES=[
  {id:'15',act:1,name:'Sizzle (“cooked”)',syn:'sizzle',rev:.1},
  {id:'16',act:1,name:'Splash + swell',syn:'splash',stops:['13'],rev:.5},
  {id:'17',act:1,name:'Fellowship montage',syn:'montage',loop:true,lvl:.7,rev:.35},
- {id:'18',act:1,name:'Flashback harp ◂ out',syn:'flashOut',stops:'all',then:[['01',1.8]],rev:.6,tip:'The harp reversed. Fades out the scene, then the noir theme (01) comes back by itself.'},
+ {id:'18',act:1,name:'Flashback harp ◂ out',syn:'flashOut',stops:'all',rev:.6,tip:'The harp reversed. Fades out the scene. Bring the noir theme (01) back when you’re ready.'},
 
  {id:'19',act:2,name:'Door creak (2nd entrance)',syn:'door',rev:.2,tip:'Theophilus walks in with Witness 2. Plays over the noir theme without stopping it.'},
  {id:'20',act:2,name:'Clock ticking (speeds up)',syn:'clock',loop:true,rev:.1},
  {id:'21',act:2,name:'Record scratch → silence',syn:'scratch',stops:'all',hard:true,big:true,rev:.1,tip:'Kills everything, including the noir theme. Hold the silence.'},
- {id:'22',act:2,name:'Flashback harp ▸ in',syn:'flashIn',stops:'all',then:[['22b',2.2]],rev:.6,tip:'Fades out the office music. The street ambience (22b) starts by itself as the harp ends.'},
+ {id:'22',act:2,name:'Flashback harp ▸ in',syn:'flashIn',stops:'all',rev:.6,tip:'Fades out the office music. Start the street ambience (22b) when you’re ready.'},
  {id:'22b',act:2,name:'Street ambience (Beautiful Gate)',syn:'street',loop:true,lvl:.7,rev:.2,stops:'all'},
  {id:'23',act:2,name:'Flex!',syn:'flex',rev:.4},
  {id:'24',act:2,name:'Coins → womp womp',syn:'coinWomp',rev:.25},
@@ -191,7 +191,7 @@ PI: Let us get this quick, the hearing before the court of powerful elites is go
 Witness 1: I was not there for the main case in question, but I do think there's something that happened not too long before which is important to what happened with that lame guy.
 PI: [rubs his mustache and nods his head dramatically] Anything bro, anything that would help us get any clarity to this miraculous act.
 [Now, as the Witness describes what is going on, the scene plays out next to them, as she starts, from my research I do not think many props will be necessary, people would just need to come in from the side and take their positions, so to speak.] {{05}}
-Witness 1: It was the day of Pentecost, and there were a lot of people, some people came from a couple blocks away, other people travelled from all the way in Asia, all were hoping to celebrate this special festival. And the twelve disciples of Jesus were there, including Peter and John.
+Witness 1: {{06}} It was the day of Pentecost, and there were a lot of people, some people came from a couple blocks away, other people travelled from all the way in Asia, all were hoping to celebrate this special festival. And the twelve disciples of Jesus were there, including Peter and John.
 [Next to them, as if on a different stage, the Apostles (Peter (Melvin), John (Chase)) gather together sitting on the ground, and other people (Egypt, Arturo, Darin, Kai) are around talking to each other.]
 Witness 1: And we were everybody minding our own business, kind of, celebrating and praying, and then all of a sudden like a massive hurricane comes in, {{07}} it kind of gave me tinnitus. {{06}}
 [At "a massive hurricane comes in", a huge sound comes in, and then the Holy Spirit (Quinton), descends].
@@ -215,7 +215,7 @@ Peter: Repent, and be baptized because of your forgiveness.
 Witness 1: And everyone who believed, started serving one another, we ate together like every day, and the apostles continued to show great signs, I haven't gotten to see all of them though.
 [Everyone except Witness 1 and the PI exit the scene] {{18}}
 ## ACT 2 — Healing of the Lame Man
-PI: Wait, hold on, hold on, there was a lot in all of that. [The PI leans onto his table with most of his weight, thinking out loud] So there's a Jesus, who gives powers? And not only that He is able to forgive sins?
+PI: {{01}} Wait, hold on, hold on, there was a lot in all of that. [The PI leans onto his table with most of his weight, thinking out loud] So there's a Jesus, who gives powers? And not only that He is able to forgive sins?
 Witness 1: Yes, the Spirit of God gave them the power to speak tongues, and through it they have performed many miracles, which would include the healing at the Beautiful Gate.
 PI: But why would God give people the power to speak in tongues, like within this week? What is this all about, what is the motive?
 [As the PI is confused, Theophilus comes in with another witness (Gianna), who will testify on the healing of the Lame Man]. {{19}}
@@ -224,7 +224,7 @@ PI: Ok, alright yeah let's hear her out, what happened, did you hear anyone spea
 Witness 2: What? Uh, I don't remember, I don't think so? What happened was as I was walking home, I passed by the Beautiful Gate, because it's sort of on the way, if you don't detour too much from the traffic of crowds, it saves you like 3 minutes and...
 PI: Lock-in bro. We don't have too much time this skit has to be 15 minutes.
 [As the Witness describes this next scene, that scene unfolds right next to them, again, like in the previous section, but now there is a lame guy on the floor.] {{22}}
-Witness 2: Ohh yeah, sorry. So, at the gate there was a lame man, always see him there, but then there were two men, who I hadn't seen before, and they approached the gate man, and he was like "can you give me some money, some gold," but then they replied...
+Witness 2: {{22b}} Ohh yeah, sorry. So, at the gate there was a lame man, always see him there, but then there were two men, who I hadn't seen before, and they approached the gate man, and he was like "can you give me some money, some gold," but then they replied...
 Peter: Look at us! [Peter (Melvin) flexes his nonexistent muscles]
 Lame: [Looks at them for a bit, then signals to his hand, expecting them to drop some cash on them]
 Peter: Nonono, I actually have no gold, but I can do you something better. [He reaches down to the lame man and take his hand] In the Name of Jesus Christ of Nazareth– walk! {{25}}
