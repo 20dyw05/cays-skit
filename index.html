@@ -123,8 +123,8 @@
    ========================================================= */
 const ACTS={1:'Act 1 · Intro & Pentecost',2:'Act 2 · Healing of the lame man',3:'Act 3 · Before the religious leaders',4:'Reserve · not in the script yet'};
 const CUES=[
- {id:'01',act:1,name:'Noir detective theme',syn:'noir',loop:true,lvl:.7,rev:.25,stops:'all',tip:'The PI’s office. Plays at lights up and every time the story returns to the office.'},
- {id:'01b',act:1,name:'Rain bed',syn:'rain',loop:true,lvl:.6,rev:0,tip:'Optional, layered under the noir theme.'},
+ {id:'01',act:1,name:'Noir detective theme',syn:'noir',loop:true,lvl:.7,rev:.25,stops:'all',tip:'Part 1 of the noir mix (0:20–10:20). The PI’s office in Act 1.'},
+ {id:'01b',act:2,name:'Noir theme (part 2)',syn:'noir',loop:true,lvl:.7,rev:.25,stops:'all',tip:'Part 2 of the noir mix (10:20–20:20), so the return to the office in Act 2 sounds different.'},
  {id:'02',act:1,name:'Rimshot',syn:'rimshot',rev:.15},
  {id:'03',act:1,name:'Door creak (entrance)',syn:'door',rev:.2,tip:'Theophilus walks in with Witness 1. Plays over the noir theme without stopping it.'},
  {id:'04',act:1,name:'Suspense sting',syn:'sting',rev:.35},
@@ -177,7 +177,7 @@ const CUES=[
  {id:'B',act:3,name:'I’m a Believer (ending)',syn:'victory',stops:'all',lvl:.9,rev:.2,tip:'The “I believe” dance and the ending. Intro (0:00–0:07) jumps straight to 2:19 and plays to the end: about 53 seconds.'},
 ];
 // Cues shown on the board / in the script. Everything else in CUES is kept in reserve.
-const ENABLED=['01','03','05','06','07','18','19','22','22b','25','37','38','B'];
+const ENABLED=['01','01b','03','05','06','07','18','19','22','22b','25','37','38','B'];
 const byId=Object.fromEntries(CUES.map((c,i)=>[c.id,Object.assign(c,{idx:i})]));
 
 /* =========================================================
@@ -222,7 +222,7 @@ Peter: Repent, and be baptized because of your forgiveness.
 Witness 1: And everyone who believed, started serving one another, we ate together like every day, and the apostles continued to show great signs, I haven't gotten to see all of them though.
 [Everyone except Witness 1 and the PI exit the scene] {{18}}
 ## ACT 2 — Healing of the Lame Man
-PI: {{01}} Wait, hold on, hold on, there was a lot in all of that. [The PI leans onto his table with most of his weight, thinking out loud] So there's a Jesus, who gives powers? And not only that He is able to forgive sins?
+PI: {{01b}} Wait, hold on, hold on, there was a lot in all of that. [The PI leans onto his table with most of his weight, thinking out loud] So there's a Jesus, who gives powers? And not only that He is able to forgive sins?
 Witness 1: Yes, the Spirit of God gave them the power to speak tongues, and through it they have performed many miracles, which would include the healing at the Beautiful Gate.
 PI: But why would God give people the power to speak in tongues, like within this week? What is this all about, what is the motive?
 [As the PI is confused, Theophilus comes in with another witness (Gianna), who will testify on the healing of the Lame Man]. {{19}}
@@ -617,7 +617,7 @@ class Voice{
 /* ===== SLIDES (projector window) ===== */
 const SLIDES=[['title','Title'],['office','PI’s office'],['pentecost','Pentecost'],['wind','Wind & fire'],['gate','Beautiful Gate'],['healing','Healing'],['court','Courtroom'],['end','Case closed'],['black','Black']];
 // cue id -> [slide, transition]
-const CUE_SLIDE={'01':['office','fade'],'05':['pentecost','dream'],'07':['wind','cut'],'06':['pentecost','fade'],'18':['office','dream'],'22':['gate','dream'],'25':['healing','fade'],'37':['court','objection'],'B':['end','fade']};
+const CUE_SLIDE={'01':['office','fade'],'01b':['office','fade'],'05':['pentecost','dream'],'07':['wind','cut'],'06':['pentecost','fade'],'18':['office','dream'],'22':['gate','dream'],'25':['healing','fade'],'37':['court','objection'],'B':['end','fade']};
 let slide='title', preBlack='title', bc=null; try{bc=new BroadcastChannel('cays-skit');}catch(e){}
 function setSlide(id,fx='fade'){
   slide=id; if(id!=='black') preBlack=id;
